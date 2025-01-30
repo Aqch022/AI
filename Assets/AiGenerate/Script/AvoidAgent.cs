@@ -70,7 +70,7 @@ public class AvoidAgent : Agent
 
         if (distanceToTarget < 1.5f)
         {
-            AddReward(30.0f);
+            AddReward(60.0f);
             EndEpisode();
         }
 
@@ -84,6 +84,7 @@ public class AvoidAgent : Agent
             }
         }
     }
+
     public void Update()
     {
         Vector3 rayPosition = transform.position + new Vector3(0, 0, 0);
@@ -97,22 +98,24 @@ public class AvoidAgent : Agent
         {
             if (hit.collider.tag == "block")
             {
-                AddReward(30.0f);
+                AddReward(60.0f);
+                EndEpisode();
             }
             if (hit.collider.tag == "wall")
             {
-                AddReward(-1.0f);
+                AddReward(-10.0f);
             }
         }
         if (Physics.Raycast(ray2, out hit, rayDistance))
         {
             if (hit.collider.tag == "block")
             {
-                AddReward(30.0f);
+                AddReward(60.0f);
+                EndEpisode();
             }
             if (hit.collider.tag == "wall")
             {
-                AddReward(-1.0f);
+                AddReward(-10.0f);
             }
         }
     }
